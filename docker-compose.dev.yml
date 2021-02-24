@@ -18,4 +18,4 @@ services:
       context: ./api
       dockerfile: dev.Dockerfile
     volumes:
-      - ./api:/app
+      - ./api/app:/app

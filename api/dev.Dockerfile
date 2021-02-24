@@ -5,7 +5,7 @@ WORKDIR /app
 COPY Pipfile* ./
 RUN pipenv lock --requirements > requirements.txt
 RUN pip install -r requirements.txt
-COPY ./ ./
+COPY ./app ./
 
 ENTRYPOINT [ "uvicorn" ]
 CMD ["main:app", "--host", "0.0.0.0", "--reload"]
