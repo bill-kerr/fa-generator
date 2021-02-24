@@ -1,10 +1,25 @@
 version: '3'
 
 services:
-  webapp:
+  traefik:
+    container_name: traefik
+    build:
+      context: ./traefik
+      dockerfile: Dockerfile
     ports:
-      - '5000:5000'
+      - 80:80
+      - 443:443
+      - 8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
 
   api:
+    container_name: api
+    depends_on:
+      - traefik
     ports:
-      - '8000:8000'
+      - 80
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.api.rule=Host(`api.localhost`)
+      - traefik.http.routers.api.entrypoints=web

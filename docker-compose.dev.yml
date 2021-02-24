@@ -2,6 +2,9 @@ version: '3'
 
 services:
   webapp:
+    container_name: webapp
+    depends_on:
+      - traefik
     build:
       context: ./webapp
       dockerfile: dev.Dockerfile
@@ -11,7 +14,12 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=1
     ports:
-      - '35729:35729'
+      - 5000
+      - 35729:35729
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.webapp.rule=Host(`localhost`)
+      - traefik.http.routers.webapp.entrypoints=web
 
   api:
     build:

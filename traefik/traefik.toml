@@ -1,0 +1,15 @@
+  
+[api]
+    insecure=true
+
+[providers.docker]
+    exposedbydefault=true
+
+[providers.file]
+    filename = "/etc/traefik/dynamic_conf.toml"
+
+[entrypoints]
+    [entrypoints.web]
+        address = ":80"
+    [entrypoints.websecure]
+        address = ":443"
