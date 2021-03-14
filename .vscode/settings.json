@@ -1,0 +1,4 @@
+{
+  "python.pythonPath": "./api/.venv",
+  "python.formatting.autopep8Path": "./api/.venv/autopep8"
+}
