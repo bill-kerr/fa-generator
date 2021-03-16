@@ -1,4 +1,5 @@
 {
-  "python.pythonPath": "./api/.venv",
-  "python.formatting.autopep8Path": "./api/.venv/autopep8"
+  "python.pythonPath": "./server/app/.venv",
+  "python.formatting.autopep8Path": "./server/app/.venv/bin/autopep8",
+  "python.analysis.extraPaths": ["./server/app"]
 }
